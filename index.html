@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#5b4bdb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Wochenaufgaben">
+  <meta name="description" content="Die Wochenaufgaben von Max und Matilda">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Max & Matilda – Wochenaufgaben</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Unsere Schulwoche</p>
+        <h1>Max & Matilda</h1>
+        <p id="week-label" class="week-label"></p>
+      </div>
+      <div class="week-score" aria-label="Erledigte Tage in dieser Woche">
+        <span aria-hidden="true">⭐</span>
+        <strong id="family-stars">0</strong><small>/ 10</small>
+      </div>
+    </header>
+
+    <nav id="day-tabs" class="day-tabs" aria-label="Wochentage"></nav>
+
+    <section id="weekend-note" class="weekend-note" hidden>
+      Heute ist Wochenende – du kannst schon den Montag auswählen oder vergangene Tage ansehen.
+    </section>
+
+    <div id="children" class="children"></div>
+
+    <section id="celebration" class="celebration" hidden aria-live="polite">
+      <span aria-hidden="true">🎉 ⭐ 🎉</span>
+      <strong>Ihr seid für heute fertig!</strong>
+      <p>Alle Aufgaben sind erledigt.</p>
+    </section>
+
+    <footer>
+      <span id="save-status">Wird auf diesem Gerät gespeichert</span>
+      <button id="reset-day" class="reset-button" type="button">Tag zurücksetzen</button>
+    </footer>
+  </main>
+
+  <dialog id="reset-dialog">
+    <form method="dialog">
+      <h2>Tag zurücksetzen?</h2>
+      <p>Alle Häkchen von Max und Matilda für den ausgewählten Tag werden entfernt.</p>
+      <div class="dialog-actions">
+        <button value="cancel" class="secondary">Abbrechen</button>
+        <button value="confirm" class="danger">Zurücksetzen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
