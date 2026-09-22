@@ -11,13 +11,9 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer"
     X-Frame-Options = "DENY"
+    X-Robots-Tag = "noindex, nofollow"
 
 [[redirects]]
   from = "/api/family-state"
   to = "/.netlify/functions/family-state"
-  status = 200
-
-[[redirects]]
-  from = "/api/auth"
-  to = "/.netlify/functions/auth"
   status = 200

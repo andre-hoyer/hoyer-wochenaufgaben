@@ -1,5 +1,4 @@
 import { getStore } from '@netlify/blobs';
-import { verifySession } from '../lib/auth.mjs';
 
 const headers={
   'content-type':'application/json; charset=utf-8',
@@ -9,7 +8,6 @@ const headers={
 const reply=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
 
 export default async req=>{
-  if(!verifySession(req))return reply({error:'Nicht angemeldet'},401);
   const store=getStore({name:'wochenaufgaben',region:'eu-central-1',consistency:'strong'});
   const current=await store.get('family-state',{type:'json'});
 
