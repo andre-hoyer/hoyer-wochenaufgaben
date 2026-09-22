@@ -16,3 +16,8 @@
   from = "/api/family-state"
   to = "/.netlify/functions/family-state"
   status = 200
+
+[[redirects]]
+  from = "/api/auth"
+  to = "/.netlify/functions/auth"
+  status = 200

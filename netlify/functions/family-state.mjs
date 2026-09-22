@@ -1,5 +1,5 @@
 import { getStore } from '@netlify/blobs';
-import { timingSafeEqual } from 'node:crypto';
+import { verifySession } from '../lib/auth.mjs';
 
 const headers={
   'content-type':'application/json; charset=utf-8',
@@ -8,15 +8,8 @@ const headers={
 };
 const reply=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
 
-function authorized(req){
-  const expected=process.env.FAMILY_KEY||'';
-  const received=req.headers.get('x-family-key')||'';
-  if(expected.length<32||received.length!==expected.length)return false;
-  return timingSafeEqual(Buffer.from(received),Buffer.from(expected));
-}
-
 export default async req=>{
-  if(!authorized(req))return reply({error:'Nicht autorisiert'},401);
+  if(!verifySession(req))return reply({error:'Nicht angemeldet'},401);
   const store=getStore({name:'wochenaufgaben',region:'eu-central-1',consistency:'strong'});
   const current=await store.get('family-state',{type:'json'});
 
