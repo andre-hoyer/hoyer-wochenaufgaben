@@ -1,0 +1,7 @@
+{
+  "name":"max-matilda-wochenaufgaben",
+  "private":true,
+  "version":"2.0.0",
+  "type":"module",
+  "dependencies":{"@netlify/blobs":"^10.0.10"}
+}
